@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>           //Biblioteca para usar o alocacao dinamica de maneira mais pratica
 #include "ClasseUsuario.h"  //Cabecalho onde estao os metodos referidos ao usuario
 
 //Comando para limpar o terminal -- Deixar tudo mais legivel
@@ -11,7 +12,11 @@
 using namespace std;
 
 int main(){
-    int operacao;
+
+    vector <Usuario> usuarios;  //Salva todos os usuarios
+
+    int operacao, i;
+    
     do{
         system(CLEAR);
         cout << "Venda de ingressos de jogos de futebol" << endl << endl;
@@ -35,17 +40,14 @@ int main(){
 
                 if(operacao == 1){
                     system(CLEAR);
-                    Usuario *u1 = new Usuario();
+                    Usuario u;
+                    usuarios.push_back(u);
                 }
                 else if(operacao == 2){
                     system(CLEAR);
-
-                    if(u1 == NULL){
-                        cout << "Nao existe usuario cadastrado, cadestre: " << endl;
-                        Usuario *u1 = new Usuario();
-                    }
-                    else{
-                        u1->Mostrar();                        
+                    for(i = 0; i < usuarios.size(); i++){
+                        cout << usuarios[i].GetNome() << endl;
+                        cout << usuarios[i].GetCPF() << endl << endl;
                     }
                 }
 
@@ -55,7 +57,7 @@ int main(){
                 }
 
             }while(operacao != 0);
-
+            operacao = -1;   //Comando para nao sair do programa
         }
     }while(operacao != 0);
     return 0;
