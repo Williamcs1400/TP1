@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>           //Biblioteca para usar o alocacao dinamica de maneira mais pratica
-#include "ClasseUsuario.h"  //Cabecalho onde estao os metodos referidos ao usuario
+#include "ClasseUsuario.h"  //Cabecalho onde estao os metodos relacionados aos usuarios, como cadastar e descadastrar...
+#include "ClasseJogos.h"    //Cabecalho onde estao os metodos relacionados aos jogos, como agendar, cancelar, alterar...
 
 //Comando para limpar o terminal -- Deixar tudo mais legivel
 #ifdef _WIN32
@@ -59,6 +60,8 @@ int main(){
             }while(operacao != 0);
             operacao = -1;   //Comando para nao sair do programa
         }
+
+
     }while(operacao != 0);
     return 0;
 }
