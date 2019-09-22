@@ -15,22 +15,9 @@ public:
     void Mostrar();
 };
 
-string Usuario::GetNome(){
-    return nome;
-}
-
-string Usuario::GetCPF(){
-    return cpf;
-}
-
-void Usuario::Mostrar(){
-    cout << "Nome: " << GetNome();
-    cout << "CPF: " << GetCPF();
-}
-
 Usuario::Usuario(){ //Metodo construtor da classe usuario
     
-    cout << "Dgite seu nome de usuario: ";
+    cout << "Digite seu nome de usuario: ";
     cin >> this->nome;
     cout << endl;
 
@@ -44,6 +31,17 @@ Usuario::Usuario(){ //Metodo construtor da classe usuario
 
 }
 
+string Usuario::GetNome(){
+    return nome;
+}
 
+string Usuario::GetCPF(){
+    return cpf;
+}
+
+void Usuario::Mostrar(){
+    cout << "Nome: " << GetNome() << endl;
+    cout << "CPF: " << GetCPF() << endl;
+}
 
 #endif  //CLASSEUSUARIO_H_INCLUDED

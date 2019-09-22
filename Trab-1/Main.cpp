@@ -16,7 +16,9 @@ int main(){
         system(CLEAR);
         cout << "Venda de ingressos de jogos de futebol" << endl << endl;
         cout << "Digite a opcao desejada:" << endl << endl;
-        cout << "(1) - Cadastrar Usuario" << endl;
+        cout << "(1) - Operacoes de usuario" << endl;
+        cout << "(2) - Operacoes de jogos" << endl;
+        cout << "(0) - Sair do programa" << endl;
 
         cin >> operacao;
 
@@ -27,6 +29,7 @@ int main(){
                 cout << "(1) - Cadastrar usuario" << endl;
                 cout << "(2) - Mostrar usuarios" << endl;
                 cout << "(3) - Descadastrar usurario" << endl;
+                cout << "(0) - Voltar para o menu" << endl;
 
                 cin >> operacao;
 
@@ -34,11 +37,25 @@ int main(){
                     system(CLEAR);
                     Usuario *u1 = new Usuario();
                 }
-                if(operacao == 2){
+                else if(operacao == 2){
                     system(CLEAR);
-                    u1->Mostrar();
+
+                    if(u1 == NULL){
+                        cout << "Nao existe usuario cadastrado, cadestre: " << endl;
+                        Usuario *u1 = new Usuario();
+                    }
+                    else{
+                        u1->Mostrar();                        
+                    }
                 }
-            }while(operacao > 3);
+
+                else if(operacao != 0){
+                    system(CLEAR);
+                    cout << "Digite um valor valido" << endl;
+                }
+
+            }while(operacao != 0);
+
         }
     }while(operacao != 0);
     return 0;
