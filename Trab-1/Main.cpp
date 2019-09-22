@@ -13,10 +13,10 @@
 using namespace std;
 
 int main(){
-
     vector <Usuario> usuarios;  //Salva todos os usuarios
 
     int operacao, i;
+    string aux;
     
     do{
         system(CLEAR);
@@ -41,18 +41,26 @@ int main(){
 
                 if(operacao == 1){
                     system(CLEAR);
-                    Usuario u;
-                    usuarios.push_back(u);
+                    
+                    Usuario u;  //Declara um vetor de usuarios
+                    usuarios.push_back(u);  //Insere no final do vetor
                 }
                 else if(operacao == 2){
                     system(CLEAR);
+
                     for(i = 0; i < usuarios.size(); i++){
-                        cout << usuarios[i].GetNome() << endl;
-                        cout << usuarios[i].GetCPF() << endl << endl;
+                        cout << "Usuario " << i + 1 << endl; 
+                        cout << "   Nome: " << usuarios[i].GetNome() << endl;
+                        cout << "   CPF:  " << usuarios[i].GetCPF() << endl << endl;
                     }
                 }
-
-                else if(operacao != 0){
+                /*else if(operacao == 3){
+                    system(CLEAR);
+                    cout << "Digite o CPF o usuario que deseja remover: ";
+                    cin >> aux;
+                    
+                }*/
+                else{
                     system(CLEAR);
                     cout << "Digite um valor valido" << endl;
                 }

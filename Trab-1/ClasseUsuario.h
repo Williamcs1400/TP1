@@ -7,14 +7,18 @@
 using namespace std;
 
 class Usuario{
-public:
+private:
     string nome;
     string cpf;
     string senha;
+
+public:
     Usuario();
     string GetNome();
     string GetCPF();
     void Mostrar();
+    int Descadastrar(string cpf_aux);
+
 };
 
 Usuario::Usuario(){ //Metodo construtor da classe usuario
@@ -33,17 +37,21 @@ Usuario::Usuario(){ //Metodo construtor da classe usuario
 
 }
 
-string Usuario::GetNome(){
+string Usuario::GetNome(){  //Retorna o nome
     return nome;
 }
 
-string Usuario::GetCPF(){
+string Usuario::GetCPF(){   //Retorna no numero do cpf
     return cpf;
 }
 
-void Usuario::Mostrar(){
+void Usuario::Mostrar(){    //Funcao de printar
     cout << "Nome: " << GetNome() << endl;
     cout << "CPF: " << GetCPF() << endl;
 }
+
+/*int Descadastrar(){         //Funcao para remover usuarios cadastrados
+
+}*/
 
 #endif  //CLASSEUSUARIO_H_INCLUDED
