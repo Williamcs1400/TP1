@@ -1,6 +1,6 @@
 #include <iostream>
 #include "ClasseUsuario.h"  //Cabecalho onde estao os metodos referidos ao usuario
-//Testando git local
+
 //Comando para limpar o terminal -- Deixar tudo mais legivel
 #ifdef _WIN32
     #define CLEAR "cls"
