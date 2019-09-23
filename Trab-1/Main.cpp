@@ -56,11 +56,12 @@ int main(){
                     system(CLEAR);
 
                     for(i = 0; i < usuarios.size(); i++){
-                        cout << "Usuario " << i + 1 << endl; 
+                        cout << "Usuario " << i + 1 << ":" << endl; 
                         cout << "   Nome: " << usuarios[i].GetNome() << endl;
                         cout << "   CPF:  " << usuarios[i].GetCPF() << endl << endl;
-                        }
+                        //u.Mostrar(&u, i);
                     }
+                }
                 /*else if(operacao == 3){
                     system(CLEAR);
                     cout << "Digite o CPF o usuario que deseja remover: ";
@@ -87,7 +88,7 @@ int main(){
                 if(operacao == 1){
                     system(CLEAR);
                     
-                    Jogo j;              //Declara um vetor de usuarios
+                    Jogo j;              //Chama para criar um novo usuario
                     jogos.push_back(j);  //Insere no final do vetor
                 }
             }while(operacao != 0);
