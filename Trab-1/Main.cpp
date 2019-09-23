@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>           //Biblioteca para usar o alocacao dinamica de maneira mais pratica
 #include "ClasseUsuario.h"  //Cabecalho onde estao os metodos relacionados aos usuarios, como cadastar e descadastrar...
-#include "ClasseJogos.h"    //Cabecalho onde estao os metodos relacionados aos jogos, como agendar, cancelar, alterar...
+#include "ClasseJogo.h"    //Cabecalho onde estao os metodos relacionados aos jogos, como agendar, cancelar, alterar...
 
 //Comando para limpar o terminal -- Deixar tudo mais legivel
 #ifdef _WIN32
@@ -13,7 +13,8 @@
 using namespace std;
 
 int main(){
-    vector <Usuario> usuarios;  //Salva todos os usuarios
+
+    vector <Usuario> usuarios;  //Salva todos os usuarios num vetor dinamicamente alocado
 
     int operacao, i;
     string aux;
@@ -58,7 +59,7 @@ int main(){
                     system(CLEAR);
                     cout << "Digite o CPF o usuario que deseja remover: ";
                     cin >> aux;
-                    
+
                 }*/
                 else{
                     system(CLEAR);
