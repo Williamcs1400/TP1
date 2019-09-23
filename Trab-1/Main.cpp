@@ -2,6 +2,7 @@
 #include <vector>           //Biblioteca para usar o alocacao dinamica de maneira mais pratica
 #include "ClasseUsuario.h"  //Cabecalho onde estao os metodos relacionados aos usuarios, como cadastar e descadastrar...
 #include "ClasseJogo.h"    //Cabecalho onde estao os metodos relacionados aos jogos, como agendar, cancelar, alterar...
+#include "ClassePartida.h" //Cabecalho onde estao os metodos relacionados as partidas, como agendar, cancelar, alterar...
 
 //Comando para limpar o terminal -- Deixar tudo mais legivel
 #ifdef _WIN32
@@ -15,7 +16,11 @@ using namespace std;
 int main(){
 
     vector <Usuario> usuarios;  //Salva todos os usuarios num vetor dinamicamente alocado
-    vector <Jogo> jogos;       //Salva todos os jogos num vetor dinamicamente alocado
+    cout << "Crie seu usuario inicial: " << endl << endl;
+    Usuario u;              //Chama para criar um novo usuario
+    usuarios.push_back(u);  //Insere no final do vetor
+
+    vector <Jogo> jogos;        //Salva todos os jogos num vetor dinamicamente alocado
 
     int operacao, i;
     string aux;
@@ -43,9 +48,9 @@ int main(){
 
                 if(operacao == 1){
                     system(CLEAR);
-                    
-                    Usuario u;              //Declara um vetor de usuarios
+                    Usuario u;              //Chama para criar um novo usuario
                     usuarios.push_back(u);  //Insere no final do vetor
+                      
                 }
                 else if(operacao == 2){
                     system(CLEAR);
@@ -54,8 +59,8 @@ int main(){
                         cout << "Usuario " << i + 1 << endl; 
                         cout << "   Nome: " << usuarios[i].GetNome() << endl;
                         cout << "   CPF:  " << usuarios[i].GetCPF() << endl << endl;
+                        }
                     }
-                }
                 /*else if(operacao == 3){
                     system(CLEAR);
                     cout << "Digite o CPF o usuario que deseja remover: ";

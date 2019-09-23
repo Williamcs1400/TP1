@@ -17,6 +17,11 @@ private:
 
 public:                    //Prototipo dos metodos
     Jogo();
+    string GetCodigo();
+    int GetCampeonato();
+    string GetTipo();
+    int GetRodadaFase();
+    void Listar();
 
 };
 
@@ -69,4 +74,24 @@ Jogo::Jogo(){               //Metodo construtor da classe
 
 }
 
-#endif  //CLASSEUSUARIO_H_INCLUDED
+string Jogo::GetCodigo(){
+    return this->codigo;
+}
+
+int Jogo::GetCampeonato(){
+    return this->campeonato;
+}
+
+string Jogo::GetTipo(){
+    return this->tipo;
+}
+
+int Jogo::GetRodadaFase(){
+    return this->rodada_fase;
+}
+
+void Listar(){
+    
+}
+
+#endif  //CLASSEJOGO_H_INCLUDED
