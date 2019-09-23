@@ -17,16 +17,17 @@ private:
 
 public:                    //Prototipo dos metodos
     Jogo();
-    void SetTipo();
-    void SetRodadaFase();
+
 };
 
 Jogo::Jogo(){               //Metodo construtor da classe
     cout << "Menu para cadastro de jogos" << endl << endl;
 
-    cout << "Digite o numero do codigo do jogo" << endl;
+    //Ler codigo
+    cout << "Digite o numero do codigo do jogo: ";
     cin >> this->codigo;
 
+    //Ler o campeonato
     cout << "Digite o numero correspondente a competicao: " << endl;
     cout << "   (1) - Campeonato Brasileiro;" << endl;
     cout << "   (2) - Copa do Brasil;" << endl;
@@ -36,30 +37,24 @@ Jogo::Jogo(){               //Metodo construtor da classe
     cout << "   (6) - Amistoso;" << endl;
     cin >> this->campeonato;
 
-    void SetTipo();        //Leva em consideracao o campeonato para setar o tipo
-
-    void SetRodadaFase(); //Leva em consideracao o campeonato para setar a rodada ou fase
-}
-
-void Jogo::SetTipo(){
-    if((campeonato == 1) || (campeonato == 2) || (campeonato == 3)){
+    //Ler tipo de campeonato
+    if((this->campeonato == 1) || (this->campeonato == 2) || (this->campeonato == 3)){
         tipo = "Nacional";
     }
-    else if((campeonato == 4) ||(campeonato == 5)){
+    else if((this->campeonato == 4) ||(this->campeonato == 5)){
         tipo = "Internacional";
     }
-    else if(campeonato > 5){//Se for amistoso ou um numero invalido
-        cout << "Digite se o campeonato é nacional ou internacional";
+    else if(this->campeonato > 5){//Se for amistoso ou um numero invalido
+        cout << "Digite se o campeonato é nacional ou internacional: ";
         cin >> this->tipo;
     }
-}
 
-void Jogo::SetRodadaFase(){
-    if((campeonato == 1) || (campeonato  == 3)){
-        cout << "Digite o numero da rodada da partida" << endl;
+    //Ler a rodada do jogo se for pontos corridos ou fase se for copa
+    if((this->campeonato == 1) || (this->campeonato  == 3)){
+        cout << "Digite o numero da rodada da partida";
         cin >> this->rodada_fase;
     }
-    else if((campeonato == 2) || (campeonato == 4) || (campeonato == 5)){
+    else if((this->campeonato == 2) || (this->campeonato == 4) || (this->campeonato == 5)){
         cout << "Digite a fase da competicao" << endl;
         cout << "   (16) - Para fase de grupos" << endl;
         cout << "   (8) - Oitavas de final" << endl;
@@ -68,9 +63,10 @@ void Jogo::SetRodadaFase(){
         cout << "   (1) - Final" << endl;
         cin >> this->rodada_fase;
     }
-    else if(campeonato > 5){
+    else if(this->campeonato > 5){
         this->rodada_fase = 0;
     }
+
 }
 
 #endif  //CLASSEUSUARIO_H_INCLUDED

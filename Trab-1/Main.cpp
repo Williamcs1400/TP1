@@ -15,6 +15,7 @@ using namespace std;
 int main(){
 
     vector <Usuario> usuarios;  //Salva todos os usuarios num vetor dinamicamente alocado
+    vector <Jogo> jogos;       //Salva todos os jogos num vetor dinamicamente alocado
 
     int operacao, i;
     string aux;
@@ -23,9 +24,9 @@ int main(){
         system(CLEAR);
         cout << "Venda de ingressos de jogos de futebol" << endl << endl;
         cout << "Digite a opcao desejada:" << endl << endl;
-        cout << "(1) - Operacoes de usuario" << endl;
-        cout << "(2) - Operacoes de jogos" << endl;
-        cout << "(0) - Sair do programa" << endl;
+        cout << "   (1) - Operacoes de usuario" << endl;
+        cout << "   (2) - Operacoes de jogos" << endl;
+        cout << "   (0) - Sair do programa" << endl;
 
         cin >> operacao;
 
@@ -43,7 +44,7 @@ int main(){
                 if(operacao == 1){
                     system(CLEAR);
                     
-                    Usuario u;  //Declara um vetor de usuarios
+                    Usuario u;              //Declara um vetor de usuarios
                     usuarios.push_back(u);  //Insere no final do vetor
                 }
                 else if(operacao == 2){
@@ -70,6 +71,23 @@ int main(){
             operacao = -1;   //Comando para nao sair do programa
         }
 
+        if(operacao == 2){
+            system(CLEAR);
+
+            do{
+                cout << "(1) - Cadastrar jogo" << endl;
+
+                cin >> operacao;
+
+                if(operacao == 1){
+                    system(CLEAR);
+                    
+                    Jogo j;              //Declara um vetor de usuarios
+                    jogos.push_back(j);  //Insere no final do vetor
+                }
+            }while(operacao != 0);
+            operacao = -1;   //Comando para nao sair do programa
+        }
 
     }while(operacao != 0);
     return 0;
