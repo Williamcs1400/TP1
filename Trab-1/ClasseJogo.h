@@ -56,7 +56,7 @@ Jogo::Jogo(){               //Metodo construtor da classe
 
     //Ler a rodada do jogo se for pontos corridos ou fase se for copa
     if((this->campeonato == 1) || (this->campeonato  == 3)){
-        cout << "Digite o numero da rodada da partida";
+        cout << "Digite o numero da rodada da partida: ";
         cin >> this->rodada_fase;
     }
     else if((this->campeonato == 2) || (this->campeonato == 4) || (this->campeonato == 5)){
