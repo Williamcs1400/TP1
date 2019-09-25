@@ -1,0 +1,8 @@
+#include <iostream>
+#ifndef CLASSECARTAO_H_INCLUDED
+#define CLASSECARTAO_H_INCLUDED
+#define SUCESSO 1;
+#define FRACASSO 0;
+
+
+#endif  //CLASSECARTAO_H_INCLUDED
