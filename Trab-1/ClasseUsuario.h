@@ -17,8 +17,7 @@ public:                                 //Prototipo dos metodos
     Usuario();
     string GetNome();
     string GetCPF();
-    void Mostrar();
-    int Descadastrar(string cpf_aux);
+    //int Descadastrar(string cpf_aux);
 
 };
 
@@ -44,15 +43,6 @@ string Usuario::GetNome(){              //Retorna o nome
 
 string Usuario::GetCPF(){               //Retorna no numero do cpf
     return cpf;
-}
-
-void Usuario::Mostrar(){                //Funcao de printar
-    int i;
-    /*for(i = 0; i <= tam; i++){
-        cout << "Usuario " << i + 1 << ":" << endl; 
-        cout << "   Nome: " << u[i].GetNome() << endl;
-        cout << "   CPF:  " << u[i].GetCPF() << endl << endl;
-    }*/
 }
 
 /*int Descadastrar(){                   //Funcao para remover usuarios cadastrados

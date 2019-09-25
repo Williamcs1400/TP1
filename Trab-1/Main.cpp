@@ -16,11 +16,8 @@ using namespace std;
 int main(){
 
     vector <Usuario> usuarios;  //Salva todos os usuarios num vetor dinamicamente alocado
-    cout << "Crie seu usuario inicial: " << endl << endl;
-    //Usuario u;                //Chama para criar um novo usuario
-    //usuarios.push_back(u);    //Insere no final do vetor
-
     vector <Jogo> jogos;        //Salva todos os jogos num vetor dinamicamente alocado
+    vector <Partida> partidas;  //Salva todos as partidas num vetor dinamicamente alocado -- Partida herda Jogo
 
     int operacao, i, continuar, aux2;
     string aux, editar;
@@ -30,7 +27,7 @@ int main(){
         cout << "Venda de ingressos de jogos de futebol" << endl << endl;
         cout << "Digite a opcao desejada:" << endl << endl;
         cout << "   (1) - Operacoes de usuario" << endl;
-        cout << "   (2) - Operacoes de jogos" << endl;
+        cout << "   (2) - Operacoes de jogos/partidas" << endl;
         cout << "   (0) - Sair do programa" << endl;
 
         cin >> operacao;
@@ -77,8 +74,9 @@ int main(){
         }
 
         if(operacao == 2){
+            system(CLEAR);
+            
             do{
-                system(CLEAR);
                 cout << "(1) - Cadastrar jogo" << endl;
                 cout << "(2) - Exibir jogos cadastrados" << endl;
                 cout << "(3) - Editar jogo" << endl;
@@ -91,15 +89,21 @@ int main(){
                     
                     Jogo j;              //Chama para criar um novo jogo
                     jogos.push_back(j);  //Insere no final do vetor
+
+                    Partida p;              //Chama para criar um novo jogo
+                    partidas.push_back(p);  //Chama para criar um novo jogo
                 }
                 else if(operacao == 2){
                     system(CLEAR);
+
+                    cout << "Informacoes sobre o jogo: " << endl << endl;
+
                     for(i = 0; i < jogos.size(); i++){
                         cout << "Codigo: " << jogos[i].GetCodigo() << endl;
                         cout << "Campeonato: " << jogos[i].GetCampeonato() << endl;
                         cout << "Tipo: " << jogos[i].GetTipo() << endl;
                         cout << "Rodada/Fase: " << jogos[i].GetRodadaFase() << endl;
-                        cout <<" " << endl;
+                        cout << endl;
                     }
                     continuar = 2;
 
