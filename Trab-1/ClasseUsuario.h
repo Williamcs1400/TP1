@@ -17,8 +17,6 @@ public:                                 //Prototipo dos metodos
     Usuario();
     string GetNome();
     string GetCPF();
-    //int Descadastrar(string cpf_aux);
-
 };
 
 Usuario::Usuario(){                     //Metodo construtor da classe usuario
@@ -44,9 +42,5 @@ string Usuario::GetNome(){              //Retorna o nome
 string Usuario::GetCPF(){               //Retorna no numero do cpf
     return cpf;
 }
-
-/*int Descadastrar(){                   //Funcao para remover usuarios cadastrados
-
-}*/
 
 #endif  //CLASSEUSUARIO_H_INCLUDED
