@@ -40,7 +40,6 @@ int main(){
                 cout << "(1) - Cadastrar usuario" << endl;
                 cout << "(2) - Mostrar usuarios" << endl;
                 cout << "(3) - Descadastrar usurario" << endl;
-                cout << "(4) - Comprar ingresso" << endl;
                 cout << "(0) - Voltar para o menu" << endl;
 
                 cin >> operacao;
@@ -79,7 +78,6 @@ int main(){
                     else{
                         cout << "CPF nao encontrado" << endl << endl;
                     }
-
                 }
                 else{
                     system(CLEAR);
@@ -96,7 +94,8 @@ int main(){
             do{
                 cout << "(1) - Cadastrar jogo" << endl;
                 cout << "(2) - Exibir jogos cadastrados" << endl;
-                cout << "(3) - Editar jogo" << endl;
+                cout << "(3) - Comprar ingresso" << endl;
+                cout << "(4) - Remover jogo" << endl;
                 cout << "(0) - Voltar para o menu" << endl;
 
                 cin >> operacao;
@@ -134,63 +133,7 @@ int main(){
                         cin >> continuar;
                     }
                     system(CLEAR);
-                    
                 }
-                /*else if(operacao == 3){
-                    cout << "Digite o codigo do jogo: " << endl;
-                    cin >> editar;
-                    for(i = 0; i < jogos.size(); i ++)
-                    {
-                        if(jogos[i].GetCodigo() == editar)
-                        {
-                           do
-                           {
-                               cout << "Qual parametro?" << endl;
-                               cout << "[1] - Codigo" << endl;
-                               cout << "[2] - Campeonato" << endl;
-                               cout << "[3] - Tipo" << endl;
-                               cout << "[4] - Rodada" << endl;
-                               cout << "[0] - Voltar ao menu" << endl;
-
-                               cin >> operacao;
-
-                               if(operacao == 1)
-                               {
-                                    cout << "Insira o novo codigo: " << endl;
-                                   // cin >> jogos[i].GetCodigo();
-                                    Jogo(j);
-                                    jogos[i].GetCodigo();
-                                    cout << jogos[i].GetCodigo() << endl;
-
-                               }
-                               else if(operacao == 2)
-                               {
-                                    cout << "Insira o novo campeonato: " << endl;
-                                    cin >> jogos[i].GetCodigo();
-                                }
-                               else if(operacao == 3)
-                               {
-                                    cout << "Insira o novo tipo: " << endl;
-                                    cin >> jogos[i].GetTipo();
-                               }
-                               else if(operacao == 4)
-                               {
-                                    cout << "Insira a nova rodada: " << endl;
-                                    cin >> jogos[i].GetRodadaFase;
-                               }
-                               else
-                               {
-                                   system(CLEAR);
-                                   cout << "Insira um valor valido" << endl;
-                               }
-                               
-                           } while (operacao !=0);
-                           
-                        }
-                        
-                    }
-                
-                }*/
                 else{
                     system(CLEAR);
                     cout << "Digite um valor valido" << endl;
