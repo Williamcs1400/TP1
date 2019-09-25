@@ -85,25 +85,29 @@ int main(){
                 cin >> operacao;
 
                 if(operacao == 1){
-                    system(CLEAR);
-                    
-                    Jogo j;              //Chama para criar um novo jogo
-                    jogos.push_back(j);  //Insere no final do vetor
+                    system(CLEAR);      
 
-                    Partida p;              //Chama para criar um novo jogo
+                    Partida p;              //Chama para criar um novo jogo -- como partida herda jogos os dois sao cadastrados com uma chamada
                     partidas.push_back(p);  //Chama para criar um novo jogo
+
                 }
                 else if(operacao == 2){
                     system(CLEAR);
 
                     cout << "Informacoes sobre o jogo: " << endl << endl;
 
-                    for(i = 0; i < jogos.size(); i++){
-                        cout << "Codigo: " << jogos[i].GetCodigo() << endl;
-                        cout << "Campeonato: " << jogos[i].GetCampeonato() << endl;
-                        cout << "Tipo: " << jogos[i].GetTipo() << endl;
-                        cout << "Rodada/Fase: " << jogos[i].GetRodadaFase() << endl;
-                        cout << endl;
+                    for(i = 0; i < partidas.size(); i++){                      //Jogos e partida tem o mesmo tamanho
+                        cout << "Codigo do jogo: " << partidas[i].GetCodigo() << endl;
+                        cout << "Campeonato: " << partidas[i].GetCampeonato() << endl;
+                        cout << "Tipo: " << partidas[i].GetTipo() << endl;
+                        cout << "Rodada/Fase: " << partidas[i].GetRodadaFase() << endl;
+                        cout << "Time mandante: " << partidas[i].GetTimeMandante() << endl;
+                        cout << "Time visitante: " << partidas[i].GetTimeVisitante() << endl;
+                        cout << "Data: " << partidas[i].GetDia() << "/" << partidas[i].GetMes() << "/" << partidas[i].GetAno() << endl;
+                        cout << "Horario: " << partidas[i].GetHora() << ":" << partidas[i].GetMinutos() << endl;
+                        cout << "Codigo do ingresso: " << partidas[i].CodigoIngresso() << endl;
+                        cout << "Preco ingresso: " << partidas[i].GetPreco() << endl;
+                        cout << "Ingressos disponiveis: " << partidas[i].QtdIngressos() << endl << endl;
                     }
                     continuar = 2;
 

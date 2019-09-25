@@ -16,9 +16,19 @@ private:
 
     string time_mandante;
     string time_visitante;
-public:                         //Prototipo dos metodos
-    Partida();
+public:    //Prototipo dos metodos
 
+    Partida();
+    string GetTimeMandante();
+    string GetTimeVisitante();
+    int GetDia();
+    int GetMes();
+    int GetAno();
+    int GetHora();
+    int GetMinutos();
+    float GetPreco();
+    string CodigoIngresso();
+    int QtdIngressos();
 };
 
 Partida::Partida(){             //Metodo construtor da classe Partida
@@ -49,4 +59,34 @@ Partida::Partida(){             //Metodo construtor da classe Partida
     cin >> this->time_visitante;
 }
 
+string Partida::GetTimeMandante(){
+    return this->time_mandante;
+}
+string Partida::GetTimeVisitante(){
+    return this->time_visitante;
+}
+int Partida::GetDia(){
+    return this->dia;
+}
+int Partida::GetMes(){
+    return this->mes;
+}
+int Partida::GetAno(){
+    return this->ano;
+}
+int Partida::GetHora(){
+    return this->hora;
+}
+int Partida::GetMinutos(){
+    return this->minutos;
+}
+float Partida::GetPreco(){
+    return this->preco_ingresso;
+}
+string Partida::CodigoIngresso(){
+    return this->codigo_ingresso;
+}
+int Partida::QtdIngressos(){
+    return this->qtd_ingresso;
+}
 #endif  //CLASSEPARTIDA_H_INCLUDED
