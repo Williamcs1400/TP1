@@ -17,8 +17,8 @@ int main(){
 
     vector <Usuario> usuarios;  //Salva todos os usuarios num vetor dinamicamente alocado
     cout << "Crie seu usuario inicial: " << endl << endl;
-    Usuario u;              //Chama para criar um novo usuario
-    usuarios.push_back(u);  //Insere no final do vetor
+    //Usuario u;                //Chama para criar um novo usuario
+    //usuarios.push_back(u);    //Insere no final do vetor
 
     vector <Jogo> jogos;        //Salva todos os jogos num vetor dinamicamente alocado
 

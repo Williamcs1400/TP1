@@ -18,7 +18,7 @@ private:
 public:                    //Prototipo dos metodos
     Jogo();
     string GetCodigo();
-    int GetCampeonato();
+    string GetCampeonato();
     string GetTipo();
     int GetRodadaFase();
     void Listar();
@@ -78,8 +78,25 @@ string Jogo::GetCodigo(){
     return this->codigo;
 }
 
-int Jogo::GetCampeonato(){
-    return this->campeonato;
+string Jogo::GetCampeonato(){
+    if(this->campeonato == 1){
+        return "Campeonato Brasileiro";
+    }
+    if(this->campeonato == 2){
+        return "Copa do Brasil";        
+    }
+    if(this->campeonato == 3){
+        return "Estaduais";        
+    }
+    if(this->campeonato == 4){
+        return "Libertadores";                          
+    }
+    if(this->campeonato == 5){
+        return "Sulamericana";        
+    }
+    if(this->campeonato == 6){
+        return "Amistoso";                
+    }
 }
 
 string Jogo::GetTipo(){
