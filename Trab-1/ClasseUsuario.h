@@ -1,4 +1,5 @@
 #include <iostream>
+#include "ClasseCartao.h"
 #ifndef CLASSEUSUARIO_H_INCLUDED
 #define CLASSEUSUARIO_H_INCLUDED
 #define SUCESSO 1;
@@ -6,7 +7,7 @@
 
 using namespace std;
 
-class Usuario{
+class Usuario : public Cartao{
 
 private:
     string nome;

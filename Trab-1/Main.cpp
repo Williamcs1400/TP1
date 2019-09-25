@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
-#include <vector>           //Biblioteca para usar o alocacao dinamica de maneira mais pratica
-#include "ClasseUsuario.h"  //Cabecalho onde estao os metodos relacionados aos usuarios, como cadastar e descadastrar...
+#include <vector>          //Biblioteca para usar o alocacao dinamica de maneira mais pratica
+#include "ClasseUsuario.h" //Cabecalho onde estao os metodos relacionados aos usuarios, como cadastar e descadastrar...
 #include "ClasseJogo.h"    //Cabecalho onde estao os metodos relacionados aos jogos, como agendar, cancelar, alterar...
 #include "ClassePartida.h" //Cabecalho onde estao os metodos relacionados as partidas, como agendar, cancelar, alterar...
+#include "ClasseCartao.h"  //.....
 
 //Comando para limpar o terminal -- Deixar tudo mais legivel
 #ifdef _WIN32
@@ -15,7 +16,8 @@
 using namespace std;
 
 int main(){
-
+   
+    vector <Cartao> cartoes;
     vector <Usuario> usuarios;  //Salva todos os usuarios num vetor dinamicamente alocado
     vector <Jogo> jogos;        //Salva todos os jogos num vetor dinamicamente alocado
     vector <Partida> partidas;  //Salva todos as partidas num vetor dinamicamente alocado -- Partida herda Jogo
@@ -133,6 +135,10 @@ int main(){
                         cin >> continuar;
                     }
                     system(CLEAR);
+                }
+                else if(operacao == 3){
+                    cout << "Insira o codigo da partida que deseja comprar o ingresso: ";
+
                 }
                 else{
                     system(CLEAR);

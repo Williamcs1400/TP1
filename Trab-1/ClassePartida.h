@@ -29,6 +29,8 @@ public:    //Prototipo dos metodos
     float GetPreco();
     string CodigoIngresso();
     int QtdIngressos();
+
+    void SetQtdIngresso(int quantidade);
 };
 
 Partida::Partida(){             //Metodo construtor da classe Partida
@@ -38,7 +40,7 @@ Partida::Partida(){             //Metodo construtor da classe Partida
     cin >> this->preco_ingresso;
     cout << "Digite o codigo do ingresso: ";
     cin >> this->codigo_ingresso;
-    this->codigo_ingresso = GetCodigo() + this->codigo_ingresso;    //Concatena o codigo do jogo com o codigo do ingresso
+    this->codigo_ingresso = GetCodigo() + "-" + this->codigo_ingresso;    //Concatena o codigo do jogo com o codigo do ingresso
     cout << "Digite o quantidade disponivel de ingressos: ";
     cin >> this->qtd_ingresso;
 
