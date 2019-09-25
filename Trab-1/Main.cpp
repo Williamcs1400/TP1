@@ -17,8 +17,8 @@ using namespace std;
 
 int main(){
    
-    vector <Cartao> cartoes;
-    vector <Usuario> usuarios;  //Salva todos os usuarios num vetor dinamicamente alocado
+    vector <Cartao> cartoes;    //Salva todos os cartoes num vetor dinamicamente alocado 
+    vector <Usuario> usuarios;  //Salva todos os usuarios num vetor dinamicamente alocado -- Usuarios herda cartoes
     vector <Jogo> jogos;        //Salva todos os jogos num vetor dinamicamente alocado
     vector <Partida> partidas;  //Salva todos as partidas num vetor dinamicamente alocado -- Partida herda Jogo
 
