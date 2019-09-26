@@ -27,7 +27,7 @@ Cartao::Cartao(){//metodo construtor da classe
     cin >> this->numero_cartao;
     cout << "Digite o codigo de seguranca: ";
     cin >> this->codigo_seguranca;
-    cout << endl << endl;
+    cout << endl;
     this->debito = 0;
 }
 
