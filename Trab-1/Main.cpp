@@ -22,11 +22,14 @@ int main(){
     vector <Jogo> jogos;        //Salva todos os jogos num vetor dinamicamente alocado
     vector <Partida> partidas;  //Salva todos as partidas num vetor dinamicamente alocado -- Partida herda Jogo
 
-    int operacao, i, continuar, flag = 0;
+    int operacao, i, flag = 0, sair;
     string aux, editar;
 
     do{
         system(CLEAR);
+
+        flag = 0;
+
         cout << "Venda de ingressos de jogos de futebol" << endl << endl;
         cout << "Digite a opcao desejada:" << endl << endl;
         cout << "   (1) - Operacoes de usuario" << endl;
@@ -36,13 +39,14 @@ int main(){
         cin >> operacao;
 
         if(operacao == 1){
-            system(CLEAR);
-
             do{
-                cout << "(1) - Cadastrar usuario" << endl;
-                cout << "(2) - Mostrar usuarios" << endl;
-                cout << "(3) - Descadastrar usurario" << endl;
-                cout << "(0) - Voltar para o menu" << endl;
+                system(CLEAR);
+                cout << "Operacoes de usuario" << endl << endl;
+                cout << "Digite a opcao desejada:" << endl << endl;
+                cout << "   (1) - Cadastrar usuario" << endl;
+                cout << "   (2) - Mostrar usuarios" << endl;
+                cout << "   (3) - Descadastrar usurario" << endl;
+                cout << "   (0) - Voltar para o menu" << endl;
 
                 cin >> operacao;
 
@@ -56,15 +60,22 @@ int main(){
                 else if(operacao == 2){
                     system(CLEAR);
 
-                    for(i = 0; i < usuarios.size(); i++){
+                    for(i = 0; i < usuarios.size(); i++){ //print os usuarios e seus CPF's
                         cout << "Usuario " << i + 1 << ":" << endl; 
                         cout << "   Nome: " << usuarios[i].GetNome() << endl;
                         cout << "   CPF:  " << usuarios[i].GetCPF() << endl << endl;
                     }
+                    
+                    sair = 1; // Somente uma pausa pra deixar o codigo mais legivel
+                    while (sair != 0){
+                        cout << "Pressione 0 para prosseguir: " << endl;
+                        cin >>  sair;
+                        system(CLEAR);
+                    }
                 }
                 else if(operacao == 3){
                     system(CLEAR);
-
+                    
                     cout << "Digite o CPF o usuario que deseja remover: ";
                     cin >> aux;
 
@@ -76,6 +87,15 @@ int main(){
                     }
                     if(flag == 1){
                         usuarios.erase(usuarios.begin() + i);           //Remove o usuario no endereco i encontrado pelo  
+                        
+                        cout << "Usuario Removido com sucesso!" << endl;
+                        sair = 1;
+                        while (sair != 0) //Pausa pra deixar o codigo mais legivel
+                        {
+                            cout << "Pressione 0 para prosseguir: " << endl;
+                            cin >>  sair;
+                            system(CLEAR);
+                        }
                     }
                     else{
                         cout << "CPF nao encontrado" << endl << endl;
@@ -94,11 +114,13 @@ int main(){
             system(CLEAR);
             
             do{
-                cout << "(1) - Cadastrar jogo" << endl;
-                cout << "(2) - Exibir jogos cadastrados" << endl;
-                cout << "(3) - Comprar ingresso" << endl;
-                cout << "(4) - Remover jogo" << endl;
-                cout << "(0) - Voltar para o menu" << endl;
+                cout << "Operacoes de Jogos/Partidas" << endl;
+                cout << "Digite a opcao desejada:" << endl;
+                cout << "   (1) - Cadastrar jogo" << endl;
+                cout << "   (2) - Exibir jogos cadastrados" << endl;
+                cout << "   (3) - Comprar ingresso" << endl;
+                cout << "   (4) - Remover jogo" << endl;
+                cout << "   (0) - Voltar para o menu" << endl;
 
                 cin >> operacao;
 
@@ -107,6 +129,15 @@ int main(){
 
                     Partida p;              //Chama para criar um novo jogo -- como partida herda jogos os dois sao cadastrados com uma so chamada
                     partidas.push_back(p);  //Insere no final como uma lista
+                    
+                    system(CLEAR); // Pausa para deixar o codigo mais legivel
+                    cout << "Jogo cadastrado com Sucesso!" << endl;
+                    sair = 1;
+                    while (sair != 0){
+                        cout << "Pressione 0 para prosseguir: " << endl;
+                        cin >>  sair;
+                        system(CLEAR);
+                    }
 
                 }
                 else if(operacao == 2){
@@ -127,18 +158,22 @@ int main(){
                         cout << "Preco ingresso: " << partidas[i].GetPreco() << endl;
                         cout << "Ingressos disponiveis: " << partidas[i].QtdIngressos() << endl << endl;
                     }
-                    continuar = 0;
+                    sair  = 1;
 
-                    while(continuar != 1)
+                    while(sair != 0) // pausa para deixar o codigo mais legivel
                     {
-                        cout << "Pressione 1 para continuar" << endl;
-                        cin >> continuar;
+                        cout << "Pressione 0 para continuar" << endl;
+                        cin >> sair;
+                        system(CLEAR);
                     }
-                    system(CLEAR);
                 }
                 else if(operacao == 3){
-                    cout << "Insira o codigo da partida que deseja comprar o ingresso: ";
+                    cout << "Insira o codigo do ingresso que deseja comprar o ingresso: ";
+                    cin >> aux;
 
+                    for(i = 0; i < partidas.size(); i++){
+                        
+                    }
                 }
                 else{
                     system(CLEAR);

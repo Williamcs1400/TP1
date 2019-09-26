@@ -20,7 +20,7 @@ public:
     void SetDebito(int valor_compra);
 };
 
-Cartao::Cartao(){
+Cartao::Cartao(){//metodo construtor da classe
     cout << "Dados do cartao de credito: " << endl << endl;
 
     cout << "Digite o numero do cartao: ";

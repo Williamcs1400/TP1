@@ -5,7 +5,16 @@
 #define SUCESSO 1;
 #define FRACASSO 0;
 
+//Comando para limpar o terminal -- Deixar tudo mais legivel
+#ifdef _WIN32
+    #define CLEAR "cls"
+#else
+    #define CLEAR "clear"
+#endif
+
 using namespace std;
+
+int sair;
 
 class Usuario : public Cartao{
 
@@ -13,11 +22,15 @@ private:
     string nome;
     string cpf;
     string senha;
+    string cod_ingressos_comprados;
+    int qtd_ingressos_comprados;
 
 public:                                 //Prototipo dos metodos
     Usuario();
     string GetNome();
     string GetCPF();
+    string GetCodIngressosComprados();
+    int GetQTDIngressosComprados();
 };
 
 Usuario::Usuario(){                     //Metodo construtor da classe usuario
@@ -33,15 +46,33 @@ Usuario::Usuario(){                     //Metodo construtor da classe usuario
     cout << "Digite uma senha: ";
     cin >> this->senha;
     cout << endl;
+    sair = 1;
+    system(CLEAR);
+    cout << "Usuario Cadastrado com sucesso!" << endl;
 
+    while (sair != 0)
+    {
+        cout << "Pressione 0 para prosseguir: " << endl;
+        cin >>  sair;
+        system(CLEAR);
+    }
+    
 }
 
 string Usuario::GetNome(){              //Retorna o nome
-    return nome;
+    return this->nome;
 }
 
-string Usuario::GetCPF(){               //Retorna no numero do cpf
-    return cpf;
+string Usuario::GetCPF(){               //Retorna o numero do cpf
+    return this->cpf;
+}
+
+string Usuario::GetCodIngressosComprados(){ //Retorna o 
+    return this->cod_ingressos_comprados;
+}
+
+int Usuario::GetQTDIngressosComprados(){
+    return this->qtd_ingressos_comprados;
 }
 
 #endif  //CLASSEUSUARIO_H_INCLUDED

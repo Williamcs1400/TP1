@@ -1,8 +1,11 @@
 #include <iostream>
+#include "ClasseJogo.h" 
 #ifndef CLASSEPARTIDA_H_INCLUDED
 #define CLASSEPARTIDA_H_INCLUDED
 #define SUCESSO 1;
 #define FRACASSO 0;
+
+using namespace std;
 
 class Partida : public Jogo{    //Implementacao de heranca em c++ -- a classe partida herda a classe jogo
 private:
@@ -34,7 +37,7 @@ public:    //Prototipo dos metodos
 };
 
 Partida::Partida(){             //Metodo construtor da classe Partida
-    cout << "Menu para especificação de jogos" << endl << endl;
+    cout << "Cadastro de ingressos" << endl << endl;
 
     cout << "Digite o preco do ingresso: ";
     cin >> this->preco_ingresso;
@@ -55,40 +58,46 @@ Partida::Partida(){             //Metodo construtor da classe Partida
 
     cout << endl;
 
+    cout << "Digite somente a hora da partida e depois os minutos: ";
+    cin >> this ->hora;
+    cout << "Somente o minuto:";
+    cin >> this ->minutos;
+    cout << endl;
+
     cout << "Digite o time mandante: ";
     cin >> this->time_mandante;
     cout << "Digite o time visitante: ";
     cin >> this->time_visitante;
 }
 
-string Partida::GetTimeMandante(){
+string Partida::GetTimeMandante(){ //Retorna quem é o time da casa
     return this->time_mandante;
 }
-string Partida::GetTimeVisitante(){
+string Partida::GetTimeVisitante(){ // Retorna quem é o time visitante
     return this->time_visitante;
 }
-int Partida::GetDia(){
+int Partida::GetDia(){ //define o dia da partida
     return this->dia;
 }
-int Partida::GetMes(){
+int Partida::GetMes(){//Define o mes da partida
     return this->mes;
 }
-int Partida::GetAno(){
+int Partida::GetAno(){//Define o ano da partida
     return this->ano;
 }
-int Partida::GetHora(){
+int Partida::GetHora(){//Define a hora da partida
     return this->hora;
 }
-int Partida::GetMinutos(){
+int Partida::GetMinutos(){ //Define o minnuto em que a partida comecara
     return this->minutos;
 }
-float Partida::GetPreco(){
+float Partida::GetPreco(){//define o preço do ingresso
     return this->preco_ingresso;
 }
-string Partida::CodigoIngresso(){
+string Partida::CodigoIngresso(){//define o codigo do ingresso
     return this->codigo_ingresso;
 }
-int Partida::QtdIngressos(){
+int Partida::QtdIngressos(){//define a quantidade de ingresso
     return this->qtd_ingresso;
 }
 #endif  //CLASSEPARTIDA_H_INCLUDED
