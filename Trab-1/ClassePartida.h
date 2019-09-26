@@ -30,8 +30,8 @@ public:    //Prototipo dos metodos
     int GetHora();
     int GetMinutos();
     float GetPreco();
-    string CodigoIngresso();
-    int QtdIngressos();
+    string GetCodigoIngresso();
+    int GetQtdIngressos();
 
     void SetQtdIngresso(int quantidade);
 };
@@ -94,10 +94,13 @@ int Partida::GetMinutos(){ //Define o minnuto em que a partida comecara
 float Partida::GetPreco(){//define o preço do ingresso
     return this->preco_ingresso;
 }
-string Partida::CodigoIngresso(){//define o codigo do ingresso
+string Partida::GetCodigoIngresso(){//define o codigo do ingresso
     return this->codigo_ingresso;
 }
-int Partida::QtdIngressos(){//define a quantidade de ingresso
+int Partida::GetQtdIngressos(){//define a quantidade de ingresso
     return this->qtd_ingresso;
+}
+void Partida::SetQtdIngresso(int quantidade){
+    this->qtd_ingresso -= quantidade;
 }
 #endif  //CLASSEPARTIDA_H_INCLUDED

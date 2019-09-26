@@ -31,6 +31,9 @@ public:                                 //Prototipo dos metodos
     string GetCPF();
     string GetCodIngressosComprados();
     int GetQTDIngressosComprados();
+
+    void SetCodIngressoComprados(string codigo);
+    void SetQTDIngressosComprados(int quantidade);
 };
 
 Usuario::Usuario(){                     //Metodo construtor da classe usuario
@@ -49,6 +52,8 @@ Usuario::Usuario(){                     //Metodo construtor da classe usuario
     sair = 1;
     system(CLEAR);
     cout << "Usuario Cadastrado com sucesso!" << endl;
+
+    this->qtd_ingressos_comprados = 0;
 
     while (sair != 0)
     {
@@ -73,6 +78,14 @@ string Usuario::GetCodIngressosComprados(){ //Retorna o
 
 int Usuario::GetQTDIngressosComprados(){
     return this->qtd_ingressos_comprados;
+}
+
+void Usuario::SetCodIngressoComprados(string codigo){
+    this->cod_ingressos_comprados =  GetCodIngressosComprados() + " | " + codigo;
+}
+
+void Usuario::SetQTDIngressosComprados(int quantidade){
+    this->qtd_ingressos_comprados += quantidade;
 }
 
 #endif  //CLASSEUSUARIO_H_INCLUDED

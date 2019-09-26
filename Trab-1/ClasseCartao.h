@@ -32,7 +32,7 @@ Cartao::Cartao(){//metodo construtor da classe
 }
 
 void Cartao::SetDebito(int valor_compra){
-
+    this->debito += valor_compra;
 }
 
 #endif  //CLASSECARTAO_H_INCLUDED
