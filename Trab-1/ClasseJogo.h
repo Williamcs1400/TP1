@@ -18,16 +18,20 @@ int cont_codigo;
 class Jogo{
 private:
     string codigo;
-    int campeonato;
     string tipo;            //Informa se é nacional ou internacional
+
+    int campeonato;
     int rodada_fase;        //O grau em que a competicao se encontra
 
 public:                    //Prototipo dos metodos
     Jogo();
+
     string GetCodigo();
     string GetCampeonato();
     string GetTipo();
+
     int GetRodadaFase();
+    
     void Listar();
 
 };

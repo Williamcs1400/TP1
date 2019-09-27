@@ -5,15 +5,19 @@
 #define SUCESSO 1;
 #define FRACASSO 0;
 
+
 using namespace std;
 
 class Partida : public Jogo{    //Implementacao de heranca em c++ -- a classe partida herda a classe jogo
 private:
 
     float preco_ingresso;
-    string codigo_ingresso;
-    int qtd_ingresso;
 
+    string codigo_ingresso;
+    string cidade;
+    string estado;
+
+    int qtd_ingresso;
     int dia, mes, ano;
     int hora, minutos;
 
@@ -22,30 +26,84 @@ private:
 public:    //Prototipo dos metodos
 
     Partida();
+
     string GetTimeMandante();
     string GetTimeVisitante();
+    string GetCidade();
+    string GetEstado();
+    string GetCodigoIngresso();
+
     int GetDia();
     int GetMes();
     int GetAno();
     int GetHora();
     int GetMinutos();
-    float GetPreco();
-    string GetCodigoIngresso();
     int GetQtdIngressos();
 
+    float GetPreco();
+    
     void SetQtdIngresso(int quantidade);
 };
 
 Partida::Partida(){             //Metodo construtor da classe Partida
+    int flag = 0;
+
     cout << "Cadastro de ingressos" << endl << endl;
 
     cout << "Digite o preco do ingresso: ";
     cin >> this->preco_ingresso;
+    
+    //logica para garanti que o preço será entre 0 e 1000 reais
+    if(preco_ingresso > 1000 || preco_ingresso < 1)
+    {
+        flag = 1;
+    }
+    while(flag !=0 )
+    {
+        cout << "Valor invalido, insira um valor de 1 a 1000" << endl;
+        cin >> this -> preco_ingresso;
+
+        if(preco_ingresso > 1000 || preco_ingresso < 1)
+        {
+            flag = 1;
+        }   
+        else
+        { 
+            flag = 0;
+        }
+    }
+
     cout << "Digite o codigo do ingresso: ";
     cin >> this->codigo_ingresso;
     this->codigo_ingresso = GetCodigo() + "-" + this->codigo_ingresso;    //Concatena o codigo do jogo com o codigo do ingresso
     cout << "Digite o quantidade disponivel de ingressos: ";
     cin >> this->qtd_ingresso;
+    
+    //logica pra garantir que a quantidade de ingressos será entre 0 e 250
+    if(qtd_ingresso > 250 || qtd_ingresso < 0 || qtd_ingresso == 0)
+    {
+       flag = 1;
+    }
+   
+    while (flag != 0)
+    {
+        if(qtd_ingresso > 250 || qtd_ingresso < 0 || qtd_ingresso == 0)
+        {
+            cout << "Quantidade de ingressos invalida!, insira uma quantidade de 0 a 250" << endl;
+            cin >> this->qtd_ingresso;
+        }
+        else
+        {
+            flag = 0;
+        }
+    }
+
+    cout << endl;
+
+    cout << "Digite a cidade da partida: ";
+    cin >> this->cidade;
+    cout << "Digite o Estado da partida: ";
+    cin >> this->estado;
 
     cout << endl;
 
@@ -76,6 +134,18 @@ string Partida::GetTimeMandante(){ //Retorna quem é o time da casa
 string Partida::GetTimeVisitante(){ // Retorna quem é o time visitante
     return this->time_visitante;
 }
+string Partida::GetCidade()
+{
+    return this ->cidade;
+}
+string Partida::GetEstado()
+{
+    return this -> estado;
+}
+string Partida::GetCodigoIngresso(){//define o codigo do ingresso
+    return this->codigo_ingresso;
+}
+
 int Partida::GetDia(){ //define o dia da partida
     return this->dia;
 }
@@ -91,15 +161,14 @@ int Partida::GetHora(){//Define a hora da partida
 int Partida::GetMinutos(){ //Define o minnuto em que a partida comecara
     return this->minutos;
 }
-float Partida::GetPreco(){//define o preço do ingresso
-    return this->preco_ingresso;
-}
-string Partida::GetCodigoIngresso(){//define o codigo do ingresso
-    return this->codigo_ingresso;
-}
 int Partida::GetQtdIngressos(){//define a quantidade de ingresso
     return this->qtd_ingresso;
 }
+
+float Partida::GetPreco(){//define o preço do ingresso
+    return this->preco_ingresso;
+}
+
 void Partida::SetQtdIngresso(int quantidade){
     this->qtd_ingresso -= quantidade;
 }

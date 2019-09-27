@@ -2,9 +2,9 @@
 #include <string>
 #include <vector>          //Biblioteca para usar o alocacao dinamica de maneira mais pratica
 #include "ClasseUsuario.h" //Cabecalho onde estao os metodos relacionados aos usuarios, como cadastar e descadastrar...
-#include "ClasseJogo.h"    //Cabecalho onde estao os metodos relacionados aos jogos, como agendar, cancelar...
+#include "ClasseJogo.h"    //Cabecalho onde estao os metodos relacionados aos jogos, como agendar, cancelar, alterar...
 #include "ClassePartida.h" //Cabecalho onde estao os metodos relacionados as partidas, como agendar, cancelar, alterar...
-#include "ClasseCartao.h"  //Cabecalho onde estao os metodos relacionados as partidas, como cadastrar...
+#include "ClasseCartao.h"  //.....
 
 //Comando para limpar o terminal -- Deixar tudo mais legivel
 #ifdef _WIN32
@@ -22,14 +22,10 @@ int main(){
     vector <Jogo> jogos;        //Salva todos os jogos num vetor dinamicamente alocado
     vector <Partida> partidas;  //Salva todos as partidas num vetor dinamicamente alocado -- Partida herda Jogo
 
-    //Variaveis auxiliares do codigo
-    int operacao, i, flag = 0, sair, salva, num_aux;
+    int operacao, i, flag, sair, salva, num_aux, logado = 0, SenhaErrada;
     string aux, editar;
 
     do{
-        //Zerar flag a cada chamada do menu
-        flag = 0;
-
         system(CLEAR);
 
         cout << "Venda de ingressos de jogos de futebol" << endl << endl;
@@ -51,27 +47,24 @@ int main(){
                 cout << "   (0) - Voltar para o menu" << endl;
 
                 cin >> operacao;
+                
+                system(CLEAR);
 
                 if(operacao == 1){
-                    system(CLEAR);
-
-                    Usuario u;              //Chama para criar um novo usuario -- como usuario herda cartao, cartao é construido tambem 
-                    usuarios.push_back(u);  //Insere no final do vetor
-                      
+                    Usuario u;              //Chama para criar um novo usuario
+                    usuarios.push_back(u);  //Insere no final do vetor        
                 }
                 else if(operacao == 2){
-                    system(CLEAR);
-
-                    for(i = 0; i < usuarios.size(); i++){ //print as informacoes referentes aos usuarios
+                    for(i = 0; i < usuarios.size(); i++){ //print os usuarios e seus CPF's
                         cout << "Usuario " << i + 1 << ":" << endl; 
                         cout << "   Nome: " << usuarios[i].GetNome() << endl;
                         cout << "   CPF:  " << usuarios[i].GetCPF() << endl;
                         cout << "   Quantidade de ingressos comprados: " << usuarios[i].GetQTDIngressosComprados() << endl;
-                        cout << "   Codigos dos ingressos comprados: " << usuarios[i].GetCodIngressosComprados() << endl << endl;
+                        cout << "   Codigos dos ingressos comprados: " << usuarios[i].GetCodIngressosComprados() << endl;
+                        cout << "   Tipo de usuario: " << usuarios[i].GetTipoUsuarioPrint() << endl<< endl;
                     }
                     
-                    // Somente uma pausa pra deixar o codigo mais legivel
-                    sair = 1; 
+                    sair = 1; // Somente uma pausa pra deixar o codigo mais legivel
                     while (sair != 0){
                         cout << "Pressione 0 para prosseguir: " << endl;
                         cin >>  sair;
@@ -79,8 +72,6 @@ int main(){
                     }
                 }
                 else if(operacao == 3){
-                    system(CLEAR);
-                    
                     cout << "Digite o CPF o usuario que deseja remover: ";
                     cin >> aux;
 
@@ -91,7 +82,7 @@ int main(){
                         }
                     }
                     if(flag == 1){
-                        usuarios.erase(usuarios.begin() + i);           //Remove o usuario no endereco i encontrado pelo loop acima  
+                        usuarios.erase(usuarios.begin() + i);           //Remove o usuario no endereco i encontrado pelo  
                         
                         cout << "Usuario Removido com sucesso!" << endl;
                         sair = 1;
@@ -106,11 +97,13 @@ int main(){
                         cout << "CPF nao encontrado" << endl << endl;
                     }
                 }
+                else if(operacao == 0)
+                {
+                    //So  para não printar "Digite um valor valido"
+                }
                 else{
-                    system(CLEAR);
                     cout << "Digite um valor valido" << endl;
                 }
-
             }while(operacao != 0);
             operacao = -1;   //Comando para nao sair do programa
         }
@@ -119,7 +112,7 @@ int main(){
             system(CLEAR);
             
             do{
-                cout << "Operacoes de Jogos/Partidas" << endl << endl;
+                cout << "Operacoes de Jogos/Partidas" << endl;
                 cout << "Digite a opcao desejada:" << endl;
                 cout << "   (1) - Cadastrar jogo" << endl;
                 cout << "   (2) - Exibir jogos cadastrados" << endl;
@@ -128,28 +121,51 @@ int main(){
                 cout << "   (0) - Voltar para o menu" << endl;
 
                 cin >> operacao;
-
+                system(CLEAR);
                 if(operacao == 1){
-                    system(CLEAR);      
+                    //Verifica se o usuario eh atorizado
+                    flag = 0;
 
-                    Partida p;              //Chama para criar um novo jogo -- como partida herda jogos os dois sao cadastrados com uma so chamada
-                    partidas.push_back(p);  //Insere no final como uma lista
-                    
-                    system(CLEAR); 
-                    cout << "Jogo cadastrado com Sucesso!" << endl;
-
-                    // Pausa para deixar o codigo mais legivel
-                    sair = 1;
-                    while (sair != 0){
-                        cout << "Pressione 0 para prosseguir: " << endl;
-                        cin >>  sair;
-                        system(CLEAR);
+                    cout << "Digite seu CPF: ";
+                    cin >> aux;
+                    for(i = 0; i< usuarios.size(); i++)
+                    {
+                        if(aux.compare(usuarios[i].GetCPF()) == 0){
+                            flag = 1;
+                            break;
+                        }
                     }
 
+                    if((flag == 1) && (usuarios[i].GetTipoUsuario() == 1)){   //Se o usuario existir e for um administrador ele pode criar um jogo
+                        Partida p;              //Chama para criar um novo jogo -- como partida herda jogos os dois sao cadastrados com uma so chamada
+                        partidas.push_back(p);  //Insere no final como uma lista
+                        
+                        system(CLEAR); // Pausa para deixar o codigo mais legivel
+                        cout << "Jogo cadastrado com Sucesso!" << endl;
+                        sair = 1;
+                        while (sair != 0){
+                            cout << "Pressione 0 para prosseguir: " << endl;
+                            cin >>  sair;
+                            system(CLEAR);
+                        }
+                    }
+
+                    if(flag == 0){
+                        cout << "Usuario nao encontrado" << endl;
+                    }
+
+                    if(usuarios[i].GetTipoUsuario() == 2){
+                        cout << "So usuarios administradores podem criar jogos" << endl;
+                    }
+
+                    sair = 1;
+                    while(sair != 0) // pausa para deixar o codigo mais legivel
+                    {
+                        cout << "Pressione 0 para continuar" << endl;
+                        cin >> sair;
+                    }
                 }
                 else if(operacao == 2){
-                    system(CLEAR);
-
                     cout << "Informacoes sobre o jogo: " << endl << endl;
 
                     for(i = 0; i < partidas.size(); i++){                      //Jogos e partida tem o mesmo tamanho
@@ -157,6 +173,7 @@ int main(){
                         cout << "Campeonato: " << partidas[i].GetCampeonato() << endl;
                         cout << "Tipo: " << partidas[i].GetTipo() << endl;
                         cout << "Rodada/Fase: " << partidas[i].GetRodadaFase() << endl;
+                        cout << "Local da partida: " << partidas[i].GetCidade() << " - " << partidas[i].GetEstado() << endl;
                         cout << "Time mandante: " << partidas[i].GetTimeMandante() << endl;
                         cout << "Time visitante: " << partidas[i].GetTimeVisitante() << endl;
                         cout << "Data: " << partidas[i].GetDia() << "/" << partidas[i].GetMes() << "/" << partidas[i].GetAno() << endl;
@@ -175,11 +192,13 @@ int main(){
                     }
                 }
                 else if(operacao == 3){
-
-                    //Procura para ver se o CPF inserido eh valido
+                    flag = 0;
+                    logado = 0;
                     cout << "Insira o seu CPF: ";
                     cin >> aux;
-                    for(i = 0; i< usuarios.size(); i++){
+
+                    for(i = 0; i< usuarios.size(); i++)
+                    {
                         if(aux.compare(usuarios[i].GetCPF()) == 0){
                             flag = 1;
                             break;
@@ -187,13 +206,39 @@ int main(){
                     }
 
                     salva = i;  //Para nao perder o usuario encontrado
+                    
+                    system(CLEAR);
 
-                    if(flag == 1){
+                    SenhaErrada = 1;
+
+                    if(flag == 1)
+                    {
+                        cout << "Insira a sua senha: " << endl;
+                        cin >> aux;
+
+                        while(SenhaErrada == 1)
+                        {  
+                            if(aux.compare(usuarios[salva].GetSenha()) == 0)
+                            {
+                                logado = 1;
+                                SenhaErrada = 0;
+                            }
+                            else
+                            {
+                                cout << "Senha errada, tente novamente: " << endl;
+                                cin >> aux;
+                                system(CLEAR);
+                            }
+                            
+                        }
+                    }
+
+                    if(logado == 1)
+                    {
                         flag = 0;
                         cout << "Insira o codigo do ingresso que deseja comprar o ingresso: ";
                         cin >> aux;
 
-                        //Procura para ver se o codigo inserido eh valido
                         for(i = 0; i < partidas.size(); i++){
                             if(aux.compare(partidas[i].GetCodigoIngresso()) == 0){
                                 flag = 1;
@@ -201,8 +246,7 @@ int main(){
                             }
                         }
                         if(flag == 1){
-                            do{ 
-                                //Efetivamento compra o ingresso -- adiciona as informacoes em usuario e em partida e classes herdadas
+                            do{
                                 cout << "Digite a quantidade de ingressos que deseja: ";
                                 cin >> num_aux;
                                 if((num_aux <= partidas[i].GetQtdIngressos()) && (num_aux != 0)){
@@ -210,18 +254,24 @@ int main(){
                                     usuarios[salva].SetDebito(partidas[i].GetPreco() * num_aux);  //O valor eh decontado do cartao
                                     usuarios[salva].SetQTDIngressosComprados(num_aux);            //Adiciona a quantidade de ingressos na classe usuarios
                                     usuarios[salva].SetCodIngressoComprados(partidas[i].GetCodigoIngresso());   //Adiciona o codigo do ingresso comprado para o inventario do usuario
+                                    cout << "Ingresso comprado com sucesso!" << endl;
+                                    sair = 1;
                                 }
                                 else{
-                                    cout << "digite um valor valido" << endl;
+                                    cout << "Quantidade de ingressos disponiveis insuficientes" << endl;
+                                    cout << "Quantidade de ingressos disponiveis: " << partidas[i].GetQtdIngressos() << endl;
                                     num_aux = -1;
                                 }
                             }while(num_aux == -1);
                         }
                         else{
+                            sair = 1;
                             cout << "Ingresso nao encontado" << endl;
                         }
                     }
-                    else{
+                    else
+                    {
+                        sair = 1;
                         cout << "Usuario nao encontado" << endl;
                     }
 
@@ -236,6 +286,7 @@ int main(){
                     system(CLEAR);
                     cout << "Digite um valor valido" << endl;
                 }
+                system(CLEAR);
             }while(operacao != 0);
             operacao = -1;   //Comando para nao sair do programa
         }
