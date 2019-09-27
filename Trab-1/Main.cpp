@@ -149,11 +149,11 @@ int main(){
                             system(CLEAR);
                         }
                     }
-
+                    //Se o CPF nao existir
                     if(flag == 0){
                         cout << "Usuario nao encontrado" << endl;
                     }
-
+                    //Se for apenas um usuario comum nao pode editar nada
                     if(usuarios[i].GetTipoUsuario() == 2){
                         cout << "So usuarios administradores podem criar jogos" << endl;
                     }
