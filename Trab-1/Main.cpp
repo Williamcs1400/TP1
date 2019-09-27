@@ -1,3 +1,14 @@
+
+/*Universidade de Brasilia
+  Instituto de Ciencias Exatas
+  Departamento de Ciencia da Computacao
+  Tecnicas de Programação 1 - 2/2019
+  Aluno1: William Coelho da Silva
+  Aluno2: Lucas de Melo Rodrigues de Barros
+  Professor: WASHINGTON HENRIQUE CARVALHO ALMEIDA
+  MatriculaAluno1: 180029274
+  MatriculaAluno2: 180022539
+  Turma: B*/
 #include <iostream>
 #include <string>
 #include <stdlib.h>        //Biblioteca para limpar o terminal no windows
