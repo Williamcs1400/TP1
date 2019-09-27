@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <stdlib.h>        //Biblioteca para limpar o terminal no windows
 #include <vector>          //Biblioteca para usar o alocacao dinamica de maneira mais pratica
 #include "ClasseUsuario.h" //Cabecalho onde estao os metodos relacionados aos usuarios, como cadastar e descadastrar...
 #include "ClasseJogo.h"    //Cabecalho onde estao os metodos relacionados aos jogos, como agendar, cancelar, alterar...
@@ -16,8 +17,8 @@
 using namespace std;
 
 int main(){
-   
-    vector <Cartao> cartoes;    //Salva todos os cartoes num vetor dinamicamente alocado 
+
+    vector <Cartao> cartoes;    //Salva todos os cartoes num vetor dinamicamente alocado
     vector <Usuario> usuarios;  //Salva todos os usuarios num vetor dinamicamente alocado -- Usuarios herda cartoes
     vector <Jogo> jogos;        //Salva todos os jogos num vetor dinamicamente alocado
     vector <Partida> partidas;  //Salva todos as partidas num vetor dinamicamente alocado -- Partida herda Jogo
@@ -47,23 +48,23 @@ int main(){
                 cout << "   (0) - Voltar para o menu" << endl;
 
                 cin >> operacao;
-                
+
                 system(CLEAR);
 
                 if(operacao == 1){
                     Usuario u;              //Chama para criar um novo usuario
-                    usuarios.push_back(u);  //Insere no final do vetor        
+                    usuarios.push_back(u);  //Insere no final do vetor
                 }
                 else if(operacao == 2){
                     for(i = 0; i < usuarios.size(); i++){ //print os usuarios e seus CPF's
-                        cout << "Usuario " << i + 1 << ":" << endl; 
+                        cout << "Usuario " << i + 1 << ":" << endl;
                         cout << "   Nome: " << usuarios[i].GetNome() << endl;
                         cout << "   CPF:  " << usuarios[i].GetCPF() << endl;
                         cout << "   Quantidade de ingressos comprados: " << usuarios[i].GetQTDIngressosComprados() << endl;
                         cout << "   Codigos dos ingressos comprados: " << usuarios[i].GetCodIngressosComprados() << endl;
                         cout << "   Tipo de usuario: " << usuarios[i].GetTipoUsuarioPrint() << endl<< endl;
                     }
-                    
+
                     sair = 1; // Somente uma pausa pra deixar o codigo mais legivel
                     while (sair != 0){
                         cout << "Pressione 0 para prosseguir: " << endl;
@@ -82,8 +83,8 @@ int main(){
                         }
                     }
                     if(flag == 1){
-                        usuarios.erase(usuarios.begin() + i);           //Remove o usuario no endereco i encontrado pelo  
-                        
+                        usuarios.erase(usuarios.begin() + i);           //Remove o usuario no endereco i encontrado pelo
+
                         cout << "Usuario Removido com sucesso!" << endl;
                         sair = 1;
                         while (sair != 0) //Pausa pra deixar o codigo mais legivel
@@ -110,7 +111,7 @@ int main(){
 
         if(operacao == 2){
             system(CLEAR);
-            
+
             do{
                 cout << "Operacoes de Jogos/Partidas" << endl;
                 cout << "Digite a opcao desejada:" << endl;
@@ -139,7 +140,7 @@ int main(){
                     if((flag == 1) && (usuarios[i].GetTipoUsuario() == 1)){   //Se o usuario existir e for um administrador ele pode criar um jogo
                         Partida p;              //Chama para criar um novo jogo -- como partida herda jogos os dois sao cadastrados com uma so chamada
                         partidas.push_back(p);  //Insere no final como uma lista
-                        
+
                         system(CLEAR); // Pausa para deixar o codigo mais legivel
                         cout << "Jogo cadastrado com Sucesso!" << endl;
                         sair = 1;
@@ -206,7 +207,7 @@ int main(){
                     }
 
                     salva = i;  //Para nao perder o usuario encontrado
-                    
+
                     system(CLEAR);
 
                     SenhaErrada = 1;
@@ -217,7 +218,7 @@ int main(){
                         cin >> aux;
 
                         while(SenhaErrada == 1)
-                        {  
+                        {
                             if(aux.compare(usuarios[salva].GetSenha()) == 0)
                             {
                                 logado = 1;
@@ -229,7 +230,7 @@ int main(){
                                 cin >> aux;
                                 system(CLEAR);
                             }
-                            
+
                         }
                     }
 
