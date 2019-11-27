@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ClasseCartao.h"
+#include <fstream>
 #ifndef CLASSEUSUARIO_H_INCLUDED
 #define CLASSEUSUARIO_H_INCLUDED
 #define SUCESSO 1;
@@ -50,10 +51,17 @@ Usuario::Usuario(){                     //Metodo construtor da classe usuario
 
     while(flag != 0)
     {
+        fstream userData;
+
+        userData.open("arquivo.txt", ios:: out| ios::app);
+
         cout <<"   (1) Administrador - Pode remover eventos e usuarios, alem de fazer consultas" << endl;
         cout << "   (2) Usuario cliente - pode fazer consultar e comprar ingressos" << endl;
 
         cin >> this->tipo_usuario;
+        userData << tipo_usuario << " ";
+        userData.close();
+
         if(this->tipo_usuario == 1)
         {
             this->tipo_usuario_print = "Administrador";
@@ -69,22 +77,32 @@ Usuario::Usuario(){                     //Metodo construtor da classe usuario
         }
     }
 
+    fstream userData;
+    userData.open("userData.txt", ios::out|ios::app);
+
     cout << "Digite seu nome de usuario: ";
     cin >> this->nome;
+    userData << nome << " ";
     cout << endl;
 
     cout << "Digite seu CPF: ";
     cin >> this->cpf;
+    userData << cpf << " ";
     cout << endl;
 
     cout << "Digite uma senha: ";
     cin >> this->senha;
+    userData << senha << " ";
     cout << endl;
     sair = 1;
     system(CLEAR);
     cout << "Usuario Cadastrado com sucesso!" << endl;
 
+
     this->qtd_ingressos_comprados = 0;
+    userData << qtd_ingressos_comprados << "\n";
+
+    userData.close();
 
     while (sair != 0)
     {
