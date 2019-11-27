@@ -1,0 +1,30 @@
+Cadastro de Jogos e venda de ingressos:
+    1. Apresentação do menu:
+        Arquivo: Main.cpp;
+        Ação: Exibição do menu, bem como colher dados inseridos pelo usuário;
+        Expectativa: Interação com o usuário, colher dados, ser limpo, chamar funções e passar dados colhidos 
+        pelo usuário e do programa para as outras classes;
+        Resultado: 100% funcional.
+    2. Classe Usuário:
+        Arquivo: ClasseUsuario.h;
+        Acão: Realizar todos os processos referentes aos usuários;
+        Expectativa: Cadastrar usuários, podendo ele ser adminstrador ou comum, guardar códigos dos ingressos que ele possui
+        a quantidade que possui, setar e retornar cpf, nome e senha;
+        Resultado: 100% funcional.
+    3. Classe Cartão:
+        Arquivo: ClasseCartao.h;
+        Ação: Realizar interações financeiras entre o jogo e o cartão do usuário;
+        Expectativa: Cadastrar cartões, descontar os valores dos ingressos;
+        Resultado: 100% funcional.
+    4. Classe Jogo:
+        Arquivo: ClasseJogo.h;
+        Ação: Dar informações sobre o jogo;
+        Expectativa: Setar informações sobre o campeonato em que o jogo será disputado, além de imprimir jogos cadastados,
+        primeiros números do código do ingresso;
+        Resultado: 100% funcional.
+    5. Classe Partida:
+        Arquivo: ClassePartida;
+        Ação: Dar informações sobre o dia do jogo;
+        Expectativa: Fornecer hora, data, preço do ingresso, últimos códigos do ingresso, times que irão disputar a partida,
+        estado, cidade, além de interagir com o usuário.
+        Resultado: 100% funcional.
