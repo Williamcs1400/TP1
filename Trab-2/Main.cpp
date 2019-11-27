@@ -1,4 +1,3 @@
-
 /*Universidade de Brasilia
   Instituto de Ciencias Exatas
   Departamento de Ciencia da Computacao
@@ -10,13 +9,16 @@
   MatriculaAluno2: 180022539
   Turma: B*/
 #include <iostream>
-#include <string>
-#include <stdlib.h>        //Biblioteca para limpar o terminal no windows
+#include <string> 
+#include<fstream>          //Biblioteca para trabalhar com os arquivos
+//#include <stdlib>        //Biblioteca para limpar o terminal no windows
 #include <vector>          //Biblioteca para usar o alocacao dinamica de maneira mais pratica
 #include "ClasseUsuario.h" //Cabecalho onde estao os metodos relacionados aos usuarios, como cadastar e descadastrar...
 #include "ClasseJogo.h"    //Cabecalho onde estao os metodos relacionados aos jogos, como agendar, cancelar, alterar...
 #include "ClassePartida.h" //Cabecalho onde estao os metodos relacionados as partidas, como agendar, cancelar, alterar...
 #include "ClasseCartao.h"  //.....
+
+//, ios:: app(add informacoes)
 
 //Comando para limpar o terminal -- Deixar tudo mais legivel
 #ifdef _WIN32
